@@ -230,7 +230,7 @@ def audit_tools(file: str, tools: list) -> list[Finding]:
         for rx, label in INJECTION:
             if rx.search(norm):
                 out.append(Finding(file, name, "tool-poisoning", "high",
-                                   f"Tool description contains a {label}", "Review the full description before approving this server"))
+                                   f"Tool description contains: {label}", "Review the full description before approving this server"))
         desc = str(t.get("description", ""))
         if len(desc) > 1500:
             out.append(Finding(file, name, "long-description", "low",
